@@ -1,0 +1,85 @@
+%atualizacao em 31-10-2022 (Todo o arquivo)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% criar lista de quadros
+\makeatletter
+% Novo list of (listings) para QUADROS
+\newcommand{\quadroname}{Quadro}
+\newcommand{\listofquadrosname}{\textbf{LISTA DE QUADROS}}
+
+\newfloat{quadro}{loq}{\quadroname}
+\newlistof{listofquadros}{loq}{\listofquadrosname}
+\newlistentry{quadro}{loq}{0}
+
+% configurações para atender às regras da ABNT
+\counterwithout{quadro}{chapter}
+\renewcommand{\cftquadroname}{\quadroname\space} 
+\renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
+
+% Configuração de posicionamento padrão:
+\setfloatlocations{quadro}{hbtp}
+\makeatother         
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%secao quinaria
+%\titleformat{\subparagraph}
+%{\normalfont\normalsize\itshape}{\thesubparagraph}{1em}{}
+%\titlespacing*{\subparagraph}{0pt}{3.25ex plus 1ex minus %.2ex}{0.55cm}
+%\newcommand{\subsubsubsubsection}{\subparagraph}
+%%%%%%%%%%%%%%%%%%5
+
+\newcommand{\sectionbreak}{\clearpage}
+
+
+\newcommand{\fonteimagem}{\par\medskip\scriptsize}
+
+%\renewcommand{\ABNTEXchapterfontsize}{\normalsize}
+\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalsize}
+
+
+
+%Ajuste sumario
+\renewcommand{\cftsectionfont}{\bfseries\sffamily\uppercase}
+\renewcommand{\cftsubsectionfont}{\sffamily}
+\renewcommand{\cftsubsubsectionfont}{\sffamily\bfseries}
+\renewcommand{\cftparagraphfont}{\sffamily}
+%\renewcommand{\cftsubparagraphfont}{\sffamily\itshape}
+\renewcommand{\cftchapterfont}{\small\sffamily\bfseries}
+%%%\setlength\cftchapternumwidth{10pt}
+
+
+
+
+%remove o espaço no sumario antes das referencias
+\renewcommand{\phantompart}{%
+  \bookmarksetup{startatroot}%
+  \phantomsection%
+  \ifthenelse{\boolean{ABNTEXsumario-abnt-6027-2012}}{%
+    \addtocontents{toc}{\cftbeforechapterskip}}{%
+    \addtocontents{toc}{\cftbeforepartskip}}%
+}
+
+%correções no tamanho das fontes no sumario
+\renewcommand{\partapendices}{
+    \cleardoublepage
+    \phantomsection
+    \appendixpage
+}
+
+\renewcommand{\partanexos}{
+    \cleardoublepage
+    \phantomsection
+    \appendixpage
+}
+
+
+\newcommand{\secao}[1]{\section{\uppercase{#1}}}
+\newcommand{\subsecao}[1]{\subsection{\uppercase{#1}}}
+\newcommand{\subsubsecao}[1]{\subsubsection{#1}}
+\newcommand{\subsubsubsecao}[1]{\subsubsubsection{#1}}
+

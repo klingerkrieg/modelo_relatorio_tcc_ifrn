@@ -1,0 +1,54 @@
+%atualizacao em 31-10-2022 (Todo o arquivo)
+%esse includes precisavam ficar depois do \begin{document}
+
+
+\titleformat{\section}{\normalfont\bfseries\uppercase}{\thesection}{1em}{}
+\titlespacing*{\section}{0cm}{0.60cm}{0.70cm}
+\titleformat{\subsection}{\normalfont\uppercase}{\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0cm}{0.60cm}{0.70cm}
+\titleformat{\subsubsection}{\normalfont\bfseries}{\thesubsubsection}{1em}{}
+\titlespacing*{\subsubsection}{0cm}{0.60cm}{0.70cm}
+
+\titleformat{\subsubsubsection}{\normalfont}{\thesubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsection}{0cm}{0.60cm}{0.70cm}
+
+
+%secao quaternaria
+\renewcommand*{\thesubparagraph}{\alph{subparagraph}}
+\titleformat{\paragraph}
+{\normalfont\normalsize}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}{0cm}{0.60cm}{0.70cm}
+\renewcommand{\subsubsubsection}{\paragraph}
+%%%%%%%%%%%%%%%%%%
+
+
+
+\renewcommand{\agradecimentosname}{\textbf{AGRADECIMENTOS}}
+\renewcommand{\resumoname}{\textbf{RESUMO}}
+\renewcommand{\listadesiglasname}{\textbf{LISTA DE SIGLAS}}
+\renewcommand{\listadesimbolosname}{\textbf{LISTA DE SÍMBOLOS}}
+\renewcommand{\listfigurename}{\textbf{LISTA DE ILUSTRAES}}
+\renewcommand{\listtablename}{\textbf{LISTA DE TABELAS}}
+\renewcommand{\listfigurename}{\textbf{LISTA DE ILUSTRAÇÕES}}
+%\renewcommand{\listquadrosname}{\textbf{LISTA DE QUADROS}}
+\renewcommand{\contentsname}{\textbf{SUMÁRIO}}
+
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+\imprimirfolhaderosto
+% ---

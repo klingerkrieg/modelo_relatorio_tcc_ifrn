@@ -1,0 +1,4 @@
+# 2.1 
+# Inclusão de Código-fonte
+# Correção da lista de quadros
+# Inclusão do abntex2/IFRN.sty

@@ -1,0 +1,329 @@
+
+\documentclass[
+    article,
+	% -- opções da classe memoir --
+	12pt,				% 
+	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,
+	%twoside,			% para impressão em verso e anverso. Oposto a oneside
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil,				% o último idioma é o principal do documento
+	]{abntex2}
+	
+
+%atualizacao em 31-10-2022
+\usepackage{abntex2/IFRN}
+
+\usepackage{tgtermes}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\pagestyle{fancyplain}
+\fancyhf{}
+\lhead{}
+\rhead{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0pt}
+% ---
+% PACOTES
+% ---
+
+% ---
+% Pacotes fundamentais 
+% ---
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+\usepackage{float}
+% ---
+\usepackage{pdfpages}
+\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage[export]{adjustbox}
+\usepackage{graphbox,graphicx}
+
+
+% ---
+% Pacotes adicionais, usados no anexo do modelo de folha de identificação
+% ---
+\usepackage{multicol}
+\usepackage{multirow}
+% ---
+\usepackage[font=footnotesize]{caption}%textfont=bf,labelfont=bf,
+\usepackage[table,xcdraw]{xcolor}
+
+
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+\usepackage{titlesec}
+\usepackage[left=3cm,top=3cm,right=2cm,bottom=2cm]{geometry}
+
+
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref} % Paginas com as citações na bibl
+\usepackage[alf,
+            %versalete,
+            abnt-emphasize = bf, % destaca o titulo em negrito;
+            %abnt-etal-list = 3, % trabalhos com mais de 3 autores recebem et al.,;
+            %abnt-etal-text = it, % escreve o et al., em italico;
+            %abnt-and-type = &, % usa o carater '&' no lugar de 'e' para mais de um autor;
+            %abnt-last-names = abnt, % trata sobrenomes 'estritamente' conforme a ABNT; e
+            %abnt-repeated-author-omit = yes % autores com + de uma entrada recebem '____.'
+]{abntex2cite}
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{relatório técnico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=black,          	% color of internal links
+    	citecolor=black,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+
+%atualizacao em 31-03-2021
+
+\renewcommand{\imprimircapa}{%
+\begin{capa}%
+    \center
+        \centering \nomeInstituicao 
+        
+        \vspace*{3cm}
+        
+        {\ABNTEXchapterfont\normalsize\imprimirautor} 
+        
+        \vspace*{4cm}
+        
+        {\ABNTEXchapterfont\bfseries\normalsize\imprimirtitulo} 
+        \vspace*{\fill}
+        
+        {\normalsize\imprimirlocal} 
+            \par
+        {\normalsize\imprimirdata}
+        
+    \vspace*{1cm}
+    
+\end{capa}
+}
+
+
+
+\renewcommand{\imprimirfolhaderosto}{%
+\begin{folhadeaprovacao}%
+    \center
+        
+        {\ABNTEXchapterfont\normalsize\imprimirautor} 
+        
+        \vspace*{4cm}
+        
+        {\ABNTEXchapterfont\bfseries\normalsize\imprimirtitulo} 
+        \vspace*{2cm}
+        
+        \hspace{.45\textwidth}
+        \begin{minipage}{.5\textwidth}
+            \singlespacing
+            \imprimirpreambulo \\
+            \\
+            Orientador: \imprimirorientador
+        \end{minipage}%
+        
+        \vspace*{\fill}
+        
+        {\normalsize\imprimirlocal} 
+            \par
+        {\normalsize\imprimirdata}
+        
+    \vspace*{1cm}
+    
+    \newpage
+    
+\end{folhadeaprovacao}
+}
+
+%atualizacao em 31-03-2021
+
+
+
+
+
+%atualização em 31/10/2022
+\usepackage{listings}
+
+% ----------------------------------------------------------
+% PERSONALIZAÇÃO DE CORES
+% ----------------------------------------------------------
+\definecolor{cinza}{HTML}{FCF8F8}
+\definecolor{blue}{RGB}{41,5,195}
+\definecolor{gray}{rgb}{.4,.4,.4}
+\definecolor{gray}{rgb}{.4,.4,.4}
+\definecolor{pblue}{rgb}{0.13,0.13,1}
+\definecolor{pgreen}{rgb}{0,0.5,0}
+\definecolor{pred}{rgb}{0.9,0,0}
+\definecolor{pgrey}{rgb}{0.46,0.45,0.48}
+\definecolor{lightgray}{rgb}{0.95, 0.95, 0.96}
+\definecolor{whitesmoke}{rgb}{0.96, 0.96, 0.96}
+\definecolor{javared}{rgb}{0.6,0,0} % for strings
+\definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
+\definecolor{meucinza}{rgb}{0.5, 0.5, 0.5}
+%\definecolor{lightgray}{gray}{0.9}
+
+% define formato e estilo dos elementos do tipo Codigo Fonte
+\lstset{language=PHP,
+basicstyle=\ttfamily\scriptsize,
+%basicstyle=\ttfamily,
+keywordstyle=\color{javapurple}\bfseries,
+stringstyle=\color{pblue},
+commentstyle=\color{javagreen},
+morecomment=[s][\color{javadocblue}]{/**}{*/},
+morecomment=[s][\color{gray}]{@}{\ },
+numbers=left,
+numberstyle=\tiny\color{black},
+backgroundcolor=\color{cinza},
+stepnumber=2,
+numbersep=8pt,
+xleftmargin=14pt,
+tabsize=4,
+showspaces=false,
+showstringspaces=false,
+breaklines=true,}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newenvironment{ficha}{\textbf{Ficha catalográfica}}
+
+\providecommand{\imprimirDataApresentacao}{}
+\newcommand{\dataApresentacao}[1]{\renewcommand{\imprimirDataApresentacao}{#1}}
+
+\providecommand{\imprimirPrimeiroMembroBanca}{}
+\providecommand{\imprimirInstituicaoPrimeiroMembroBanca}{}
+\newcommand{\primeiroMembroBanca}[2]{
+    \renewcommand{\imprimirPrimeiroMembroBanca}{#1}
+    \renewcommand{\imprimirInstituicaoPrimeiroMembroBanca}{#2}
+}
+
+
+\providecommand{\imprimirSegundoMembroBanca}{}
+\providecommand{\imprimirInstituicaoSegundoMembroBanca}{}
+\newcommand{\segundoMembroBanca}[2]{
+    \renewcommand{\imprimirSegundoMembroBanca}{#1}
+    \renewcommand{\imprimirInstituicaoSegundoMembroBanca}{#2}
+}
+
+
+
+\newcommand{\folhaaprovacao}{
+%
+\begin{folhadeaprovacao}
+
+  \begin{center}
+    {\ABNTEXchapterfont\large\imprimirautor}
+
+    \vspace*{\fill}\vspace*{\fill}
+    \begin{center}
+      \ABNTEXchapterfont\bfseries\normalsize\imprimirtitulo
+    \end{center}
+    \vspace*{2cm}
+    
+    \hspace{.45\textwidth}
+    \begin{minipage}{.5\textwidth}
+        \imprimirpreambulo
+    \end{minipage}%
+    \vspace*{\fill}
+   \end{center}
+        
+   Trabalho aprovado. \imprimirlocal, \imprimirDataApresentacao.
+   \newline
+   \newline
+   \centering BANCA EXAMINADORA
+
+
+   %sempre manter o título acadêmico dos professores
+   \assinatura{\textbf{\imprimirorientador} \\ Orientador - IFRN} 
+   \assinatura{\textbf{\imprimirPrimeiroMembroBanca} \\ \imprimirInstituicaoPrimeiroMembroBanca}
+   \assinatura{\textbf{\imprimirSegundoMembroBanca} \\ \imprimirInstituicaoSegundoMembroBanca}
+
+    \newpage
+\end{folhadeaprovacao}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\espacofichacatalografica}{
+\begin{ficha}
+    \centering Aqui entrará a ficha catalográfica
+    \newpage
+\end{ficha}
+}
